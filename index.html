@@ -7,94 +7,359 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Poppins', sans-serif; line-height: 1.6; background: #f4f4f4; color: #333; }
-    header { background: #0d1117; color: #fff; padding: 3rem 1rem 2rem; text-align: center; position: relative; }
+    body { font-family: 'Poppins', sans-serif; background: #f4f4f4; color: #333; position: relative; overflow-x: hidden; }
+    header { background: #0d1117; color: #fff; padding: 3rem 1rem 2rem; text-align: center; position: relative; z-index: 1; }
     header h1 { font-size: 3rem; margin-bottom: 0.5rem; }
     header p { font-size: 1.2rem; }
     .banner {
-      width: 100%;
-      max-height: 300px;
-      overflow: hidden;
-      margin-bottom: 1rem;
+      background-image: url('https://images.unsplash.com/photo-1581090700227-1e8a6dd9f842?auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
     }
-    .banner img {
+    .typewriter {
+      font-size: 1.5rem;
+      color: #58a6ff;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #58a6ff;
       width: 100%;
-      height: auto;
-      display: block;
-      object-fit: cover;
+      margin-top: 0.5rem;
+      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #58a6ff; }
     }
     .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
     section { margin-bottom: 2.5rem; }
     h2 { color: #111827; margin-bottom: 1rem; font-size: 2rem; border-left: 4px solid #2563eb; padding-left: 0.6rem; }
     ul { list-style: none; padding-left: 1rem; }
     ul li { margin-bottom: 0.75rem; }
-    .projects a { color: #2563eb; text-decoration: none; font-weight: 600; }
-    .projects a:hover { text-decoration: underline; }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      text-align: center;
+    }
+    .card a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .card a:hover { text-decoration: underline; }
     footer { background: #0d1117; color: #fff; text-align: center; padding: 1.5rem; margin-top: 2rem; }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    form button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .drop {
+      position: absolute;
+      bottom: 100%;
+      width: 2px;
+      height: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
   </style>
 </head>
 <body>
+  <div class="rain" id="rain"></div>
+
   <header>
     <div class="banner">
-      <img src="banner-placeholder.jpg" alt="Web Developer Banner" />
+      <div>Welcome to My Portfolio</div>
+      <div class="typewriter">I am a WordPress Developer | React.js | WordPress | HTML | CSS | JS</div>
     </div>
     <h1>Aniket Palwalia</h1>
-    <p>Frontend Web Developer | React.js | WordPress</p>
     <p>Email: aniketpalwalia11@gmail.com | 📞 7818896149</p>
     <p><a href="https://linkedin.com/in/aniket-palwalia-389665283" target="_blank" style="color:#58a6ff">LinkedIn</a> |
-       <a href="https://github.com/AniketPalwalia/Dance-website" target="_blank" style="color:#58a6ff">GitHub</a></p>
+       <a href="https://github.com/AniketPalwalia" target="_blank" style="color:#58a6ff">GitHub</a></p>
   </header>
 
   <div class="container">
     <section>
       <h2>About Me</h2>
-      <p>Frontend Developer skilled in React.js, HTML, CSS, and JavaScript, with strong WordPress expertise. Passionate about creating responsive, user-friendly websites and continuously improving with every project. Eager to expand into full-stack development.</p>
+      <p>I'm Aniket, a passionate frontend developer skilled in React.js, WordPress, HTML, CSS & JavaScript. I enjoy creating responsive websites and delivering real business value through great user experience. I'm also expanding into full-stack development and digital strategy.</p>
     </section>
 
     <section>
       <h2>Skills</h2>
       <ul>
         <li>Frontend: HTML, CSS, JavaScript, React.js, Bootstrap, Tailwind CSS</li>
-        <li>CMS: WordPress, Divi, Elementor, WPForms, WP SMTP, Wordfence, RankMath SEO</li>
-        <li>Backend: Node.js, MySQL</li>
-        <li>Tools: Git, Canva, Jotform</li>
+        <li>CMS: WordPress, Elementor, Divi, WPForms, WP SMTP, Wordfence, RankMath SEO</li>
+        <li>Backend: Node.js, MySQL (Basics)</li>
+        <li>Design & Tools: Canva, Jotform, Git, SEO Tools</li>
       </ul>
     </section>
 
-    <section class="projects">
+    <section>
       <h2>Projects</h2>
-      <ul>
-        <li><strong>Terrace Garden India:</strong> <a href="https://www.terracegardenindia.com" target="_blank">Visit</a></li>
-        <li><strong>Admission Consultant:</strong> <a href="https://www.admissionconsultant.in" target="_blank">Visit</a></li>
-        <li><strong>Bagichi Landscapers:</strong> <a href="https://www.bagichi.in" target="_blank">Visit</a></li>
-        <li><strong>AllAirAviation:</strong> <a href="https://www.allairaviation.com" target="_blank">Visit</a></li>
-        <li><strong>Khadwale:</strong> <a href="https://www.khadwale.in" target="_blank">Visit</a></li>
-        <li><strong>UnidealOverseas:</strong> <a href="https://www.unidealoverseas.in" target="_blank">Visit</a></li>
-      </ul>
+      <div class="projects">
+        <div class="card"><strong>Terrace Garden India</strong><br><a href="https://terracegardenindia.com" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>Admission Consultant</strong><br><a href="https://admissionconsultant.in" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>Bagichi Landscapers</strong><br><a href="https://bagichi.in" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>Khadwale</strong><br><a href="https://khadwale.in" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>AllAir Aviation</strong><br><a href="https://allairaviation.com" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>Unideal Overseas</strong><br><a href="https://unidealoverseas.in" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>Delhi Mountain Riders</strong><br><a href="https://delhimountainriders.com" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>Urbanscape Interior</strong><br><a href="https://urbanscapeinterior.space" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>HandsOn Terra</strong><br><a href="https://handsonterra.in" target="_blank">Visit Site</a></div>
+      </div>
     </section>
 
     <section>
-      <h2>Experience</h2>
-      <ul>
-        <li><strong>Web Developer</strong> – Terrace Garden India (Oct 2024 – Present)</li>
-        <li><strong>Intern</strong> – Suvidha Foundation (Jun 2024 – Jul 2024)</li>
-        <li><strong>Intern</strong> – Unified Mentor Pvt Ltd (Apr 2024 – May 2024)</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Education</h2>
-      <p>Bachelor of Computer Applications (BCA) – College Of Applied Education and Health Sciences, Meerut (2020–2023)</p>
-    </section>
-
-    <section>
-      <h2>Languages</h2>
-      <p>English, Hindi – Full Professional Proficiency</p>
+      <h2>Contact Me</h2>
+      <form action="https://formspree.io/f/xwkgrbqy" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
     </section>
   </div>
 
   <footer>
     <p>© 2025 Aniket Palwalia | Portfolio</p>
   </footer>
+
+  <script>
+    const rain = document.getElementById('rain');
+    for (let i = 0; i < 150; i++) {
+      const drop = document.createElement('div');
+      drop.classList.add('drop');
+      drop.style.left = `${Math.random() * 100}vw`;
+      drop.style.animationDuration = `${0.3 + Math.random() * 0.7}s`;
+      drop.style.animationDelay = `${Math.random() * 5}s`;
+      rain.appendChild(drop);
+    }
+  </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aniket Palwalia | Web Developer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #f4f4f4; color: #333; position: relative; overflow-x: hidden; }
+    header { background: #0d1117; color: #fff; padding: 3rem 1rem 2rem; text-align: center; position: relative; z-index: 1; }
+    header h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+    header p { font-size: 1.2rem; }
+    .banner {
+      background-image: url('https://images.unsplash.com/photo-1581090700227-1e8a6dd9f842?auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      font-size: 2rem;
+      font-weight: bold;
+      position: relative;
+      z-index: 1;
+    }
+    .typewriter {
+      font-size: 1.5rem;
+      color: #58a6ff;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #58a6ff;
+      width: 100%;
+      margin-top: 0.5rem;
+      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #58a6ff; }
+    }
+    .container { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
+    section { margin-bottom: 2.5rem; }
+    h2 { color: #111827; margin-bottom: 1rem; font-size: 2rem; border-left: 4px solid #2563eb; padding-left: 0.6rem; }
+    ul { list-style: none; padding-left: 1rem; }
+    ul li { margin-bottom: 0.75rem; }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      text-align: center;
+    }
+    .card a {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .card a:hover { text-decoration: underline; }
+    footer { background: #0d1117; color: #fff; text-align: center; padding: 1.5rem; margin-top: 2rem; }
+    form input, form textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    form button {
+      background: #2563eb;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .rain {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .drop {
+      position: absolute;
+      bottom: 100%;
+      width: 2px;
+      height: 15px;
+      background: rgba(255, 255, 255, 0.2);
+      animation: fall linear infinite;
+    }
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="rain" id="rain"></div>
+
+  <header>
+    <div class="banner">
+      <div>Welcome to My Portfolio</div>
+      <div class="typewriter">I am a WordPress Developer | React.js | WordPress | HTML | CSS | JS</div>
+    </div>
+    <h1>Aniket Palwalia</h1>
+    <p>Email: aniketpalwalia11@gmail.com | 📞 7818896149</p>
+    <p><a href="https://linkedin.com/in/aniket-palwalia-389665283" target="_blank" style="color:#58a6ff">LinkedIn</a> |
+       <a href="https://github.com/AniketPalwalia" target="_blank" style="color:#58a6ff">GitHub</a></p>
+  </header>
+
+  <div class="container">
+    <section>
+      <h2>About Me</h2>
+      <p>I'm Aniket, a passionate frontend developer skilled in React.js, WordPress, HTML, CSS & JavaScript. I enjoy creating responsive websites and delivering real business value through great user experience. I'm also expanding into full-stack development and digital strategy.</p>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <ul>
+        <li>Frontend: HTML, CSS, JavaScript, React.js, Bootstrap, Tailwind CSS</li>
+        <li>CMS: WordPress, Elementor, Divi, WPForms, WP SMTP, Wordfence, RankMath SEO</li>
+        <li>Backend: Node.js, MySQL (Basics)</li>
+        <li>Design & Tools: Canva, Jotform, Git, SEO Tools</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="card"><strong>Terrace Garden India</strong><br><a href="https://terracegardenindia.com" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>Admission Consultant</strong><br><a href="https://admissionconsultant.in" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>Bagichi Landscapers</strong><br><a href="https://bagichi.in" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>Khadwale</strong><br><a href="https://khadwale.in" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>AllAir Aviation</strong><br><a href="https://allairaviation.com" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>Unideal Overseas</strong><br><a href="https://unidealoverseas.in" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>Delhi Mountain Riders</strong><br><a href="https://delhimountainriders.com" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>Urbanscape Interior</strong><br><a href="https://urbanscapeinterior.space" target="_blank">Visit Site</a></div>
+        <div class="card"><strong>HandsOn Terra</strong><br><a href="https://handsonterra.in" target="_blank">Visit Site</a></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contact Me</h2>
+      <form action="https://formspree.io/f/xwkgrbqy" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 Aniket Palwalia | Portfolio</p>
+  </footer>
+
+  <script>
+    const rain = document.getElementById('rain');
+    for (let i = 0; i < 150; i++) {
+      const drop = document.createElement('div');
+      drop.classList.add('drop');
+      drop.style.left = `${Math.random() * 100}vw`;
+      drop.style.animationDuration = `${0.3 + Math.random() * 0.7}s`;
+      drop.style.animationDelay = `${Math.random() * 5}s`;
+      rain.appendChild(drop);
+    }
+  </script>
+</body>
+</html>
+
